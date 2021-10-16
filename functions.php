@@ -2,6 +2,7 @@
 
 function xenos() {
    wp_enqueue_style('tailwindcss', '//cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css');
+   wp_enqueue_style('style', get_theme_file_uri('/assets/css/style.css'));
    wp_enqueue_script('alpine-js', 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js');
 }
 
@@ -14,5 +15,6 @@ function features() {
 
 add_action('after_setup_theme', 'features');
 
+show_admin_bar( false );
 
 ?>

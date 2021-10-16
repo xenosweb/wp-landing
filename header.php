@@ -8,66 +8,56 @@
    </head>
 
    <body <?php body_class(); ?>>
-      <header class="relative w-full px-8 text-gray-700 bg-white body-font">
-         <div class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
+      <section
+         class="h-full w-full border-box transition-all duration-500 linear lg:px-24 md:px-20 px-8 py-6 bg-gray-900 text-white shadow-lg">
+         <header class="container mx-auto flex flex-wrap flex-row items-center justify-between">
             <a href="<?php echo site_url(); ?>"
-               class="relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none">Coderaulia</a>
+               class="flex p-0 lg:w-1/5 text-xl font-bold title-font items-center lg:items-start">Coderaulia</a>
 
             <nav
-               class="top-0 left-0 z-0 flex items-center justify-center w-full h-full py-5 -ml-0 space-x-5 text-base md:-ml-5 md:py-0 md:absolute">
-               <a href="<?php echo site_url(); ?>"
-                  class="relative font-medium leading-6 text-gray-600 transition duration-150 ease-out hover:text-gray-900"
-                  x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
-                  <span class="block">Home</span>
-                  <span class="absolute bottom-0 left-0 inline-block w-full h-0.5 -mb-1 overflow-hidden">
-                     <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform bg-gray-900"
-                        x-transition:enter="transition ease duration-200" x-transition:enter-start="scale-0"
-                        x-transition:enter-end="scale-100" x-transition:leave="transition ease-out duration-300"
-                        x-transition:leave-start="scale-100" x-transition:leave-end="scale-0"></span>
-                  </span>
+               class="lg:flex hidden flex-wrap items-center text-base md:ml-auto lg:space-y-0 space-y-6 lg:space-x-12 space-x-0">
+               <a href='<?php echo site_url(); ?>' class='nav-link'>
+                  Home
                </a>
-               <a href="/about"
-                  class="relative font-medium leading-6 text-gray-600 transition duration-150 ease-out hover:text-gray-900"
-                  x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
-                  <span class="block">About</span>
-                  <span class="absolute bottom-0 left-0 inline-block w-full h-0.5 -mb-1 overflow-hidden">
-                     <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform bg-gray-900"
-                        x-transition:enter="transition ease duration-200" x-transition:enter-start="scale-0"
-                        x-transition:enter-end="scale-100" x-transition:leave="transition ease-out duration-300"
-                        x-transition:leave-start="scale-100" x-transition:leave-end="scale-0"></span>
-                  </span>
+               <a href='<?php echo site_url('/about-us'); ?>' class='nav-link'>
+                  About Us
                </a>
-               <a href="/portfolio"
-                  class="relative font-medium leading-6 text-gray-600 transition duration-150 ease-out hover:text-gray-900"
-                  x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
-                  <span class="block">Portfolio</span>
-                  <span class="absolute bottom-0 left-0 inline-block w-full h-0.5 -mb-1 overflow-hidden">
-                     <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform bg-gray-900"
-                        x-transition:enter="transition ease duration-200" x-transition:enter-start="scale-0"
-                        x-transition:enter-end="scale-100" x-transition:leave="transition ease-out duration-300"
-                        x-transition:leave-start="scale-100" x-transition:leave-end="scale-0"></span>
-                  </span>
+               <a href='<?php echo site_url('/portfolios'); ?>' class='nav-link'>
+                  Portfolio
                </a>
-               <a href="/contact"
-                  class="relative font-medium leading-6 text-gray-600 transition duration-150 ease-out hover:text-gray-900"
-                  x-data="{ hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
-                  <span class="block">Contact</span>
-                  <span class="absolute bottom-0 left-0 inline-block w-full h-0.5 -mb-1 overflow-hidden">
-                     <span x-show="hover" class="absolute inset-0 inline-block w-full h-1 h-full transform bg-gray-900"
-                        x-transition:enter="transition ease duration-200" x-transition:enter-start="scale-0"
-                        x-transition:enter-end="scale-100" x-transition:leave="transition ease-out duration-300"
-                        x-transition:leave-start="scale-100" x-transition:leave-end="scale-0"></span>
-                  </span>
+               <a href='<?php echo site_url('/blog'); ?>' class='nav-link'>
+                  Blog
+               </a>
+               <a href='<?php echo site_url('/contact-us'); ?>' class='nav-link'>
+                  Contact Us
                </a>
             </nav>
-
-            <div class="relative z-10 inline-flex items-center space-x-3 md:ml-5 lg:justify-end">
-               <span class="inline-flex rounded-md shadow-sm">
-                  <a href="mailto:coderaulia@gmail.com"
-                     class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-green-600 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-greeb-500">
-                     Get a Quote
+            <label for='menu-toggle' class='cursor-pointer lg:hidden block'>
+               <svg class='w-6 h-6' fill='none' stroke='#ffffff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'>
+                  </path>
+               </svg>
+            </label>
+            <input class='hidden' type='checkbox' id='menu-toggle' />
+            <div class='hidden w-full flex-wrap items-center text-base justify-center' id='menu'>
+               <nav
+                  class='lg:space-x-12 space-x-0 lg:flex items-center justify-center text-base pt-8 lg:pt-0 lg:space-y-0 space-y-6'>
+                  <a href='<?php echo site_url(); ?>' class='nav-link block'>
+                     Home
                   </a>
-               </span>
+                  <a href='<?php echo site_url('/about-us'); ?>' class='nav-link block'>
+                     About Us
+                  </a>
+                  <a href='<?php echo site_url('/portfolios'); ?>' class='nav-link block'>
+                     Portfolio
+                  </a>
+                  <a href='<?php echo site_url('/blog'); ?>' class='nav-link block'>
+                     Blog
+                  </a>
+                  <a href='<?php echo site_url('/contact-us'); ?>' class='nav-link block'>
+                     Contact Us
+                  </a>
+               </nav>
             </div>
-         </div>
-      </header>
+         </header>
+      </section>
