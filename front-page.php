@@ -53,29 +53,50 @@
       </p>
       <div class='flex flex-row h-full pb-10 mt-8 sm:mt-16'>
          <div class='grid grid-cols-12 col-span-12 gap-7'>
+            <?php
+               $portfolios = new WP_Query(array(
+                  'posts_per_page' => 3,
+                  'post_type' => 'portfolio',
+                  'meta_key' => 'featured',
+                  'orderby' => 'meta_value_num',
+                  'order' => 'DESC',
+                  'meta-query' => array(
+                     'key' => 'featured',
+                     'compare' => '=',
+                     'value' => 'true'
+                  )
+               )); 
+               
+               while($portfolios->have_posts()){
+                  $portfolios->the_post();
+                  
+            ?>
             <div
                class='flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4'>
-               <a href='https://covid.xenosweb.com'
+               <a href='<?php echo get_field('url'); ?>'
                   class='block transition duration-200 ease-out transform hover:scale-110'>
-                  <img class='object-cover w-full shadow-sm'
-                     src=<?php echo get_theme_file_uri('/assets/images/covid.png'); ?> />
+                  <img class='object-cover w-full shadow-sm' src=<?php print_r(get_field('images')['url']) ?> />
                </a>
                <div
                   class='relative w-full flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl'>
                   <div
                      class='bg-red-400 absolute top-0 -mt-3 flex items-center px-3 py-1.5 leading-none w-auto inline-block rounded-full text-xs font-medium uppercase text-white inline-block'>
-                     <span>React App</span>
+                     <span><?php echo get_field('category') ?></span>
                   </div>
                   <h2 class='text-base font-bold sm:text-lg md:text-xl'>
-                     <a href='https://covid.xenosweb.com'>
-                        Covid Data Tracker
+                     <a href='<?php echo get_field('url'); ?>'>
+                        <?php the_title(); ?>
                      </a>
                   </h2>
                   <p class='mt-2 text-sm text-gray-500'>
-                     Covid data tracker made with React
+                     <?php echo get_field('description'); ?>
                   </p>
                </div>
             </div>
+            <?php 
+               }
+               wp_reset_postdata();
+            ?>
          </div>
       </div>
       <div class='flex flex-col items-center col-span-12'>
